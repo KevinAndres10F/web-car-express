@@ -180,86 +180,9 @@
                     document.getElementById('catalogo').classList.remove('hidden');
                 },
                 error: function (err) {
-                    console.error("Error:", err);
-                    document.getElementById('loading').innerHTML = '<p class="text-red-500">Error cargando datos. Intenta recargar.</p>';
-                }
-            });
-        };
-
-        function renderizarProductos(lista) {
-            const contenedor = document.getElementById('catalogo');
-            contenedor.innerHTML = '';
-
-            if (lista.length === 0) {
-                document.getElementById('no-results').classList.remove('hidden');
-                return;
-            } else {
-                document.getElementById('no-results').classList.add('hidden');
-            }
-
-            lista.forEach(producto => {
-                const nombre = producto['NOMBRE DEL PRODUCTO'];
-                const precio = producto['P.VENTA'];
-
-                if (!nombre || !precio) return;
-
-                const marcaVehiculo = producto['MARCA VEHICULO'] || 'GENÉRICO';
-                const modelo = producto['MODELO'] || 'Varios';
-                const codigo = producto['CODIGO LUO-CHA'] || 'S/C';
-
-                const precioFinal = parseFloat(precio).toFixed(2);
-                const mensajeWA = `Hola AutoMaster, me interesa: ${nombre} (${codigo}) para ${marcaVehiculo}. Precio web: $${precioFinal}`;
-                const linkWA = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWA)}`;
-
-                // Icono dinámico basado en el nombre
-                let icono = "fa-cogs";
-                if (nombre.includes("FRENO") || nombre.includes("PASTILLA")) icono = "fa-compact-disc";
-                if (nombre.includes("BATERIA")) icono = "fa-car-battery";
-                if (nombre.includes("ACEITE") || nombre.includes("LUBRICANTE")) icono = "fa-oil-can";
-                if (nombre.includes("FILTRO")) icono = "fa-filter";
-                if (nombre.includes("AMORTIGUADOR") || nombre.includes("SUSPENSION")) icono = "fa-spring";
-                if (nombre.includes("LUZ") || nombre.includes("FARO") || nombre.includes("BOMBILLO")) icono = "fa-lightbulb";
-
-                const card = `
-                    <div class="bg-[#1a1d24] rounded-xl p-5 border border-gray-800 shadow-lg card-hover flex flex-col justify-between group transition-all duration-300">
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="bg-gray-800 text-gray-300 text-[10px] font-bold px-2 py-1 rounded uppercase border border-gray-700">${marcaVehiculo}</span>
-                                <span class="text-xs text-gray-500 font-mono bg-black/20 px-2 py-1 rounded">${codigo}</span>
-                            </div>
-                            
-                            <div class="text-center py-6 relative">
-                                <div class="absolute inset-0 bg-automaster-red/5 blur-xl rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                                <i class="fa-solid ${icono} text-5xl text-gray-600 group-hover:text-automaster-red transition-colors duration-300 relative z-10"></i>
-                            </div>
-
-                            <h3 class="text-md font-bold text-white leading-tight mb-1 uppercase group-hover:text-automaster-red transition-colors">${nombre}</h3>
-                            <p class="text-sm text-gray-400 mb-4 truncate" title="${modelo}">${modelo}</p>
-                        </div>
-
-                        <div class="mt-auto border-t border-gray-800 pt-4 flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-semibold">Precio</p>
-                                <p class="text-xl font-bold text-white">$${precioFinal}</p>
-                            </div>
-                            <a href="${linkWA}" target="_blank" class="bg-automaster-red hover:bg-automaster-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-red-900/30 flex items-center gap-2">
-                                <span>Comprar</span>
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                `;
-                contenedor.innerHTML += card;
-            });
-        }
-
-        // Buscador
-        document.getElementById('buscador').addEventListener('input', (e) => {
-            const texto = e.target.value.toUpperCase();
-            const filtrados = inventario.filter(p => {
-                const dataString = `${p['NOMBRE DEL PRODUCTO']} ${p['MARCA VEHICULO']} ${p['MODELO']} ${p['CODIGO LUO-CHA']}`.toUpperCase();
-                return dataString.includes(texto);
-            });
+                    const dataString = `${p['NOMBRE DEL PRODUCTO']} ${p['MARCA VEHICULO']} ${p['MODELO']} ${p['CODIGO LUO-CHA']}`.toUpperCase();
+                    return dataString.includes(texto);
+                });
             renderizarProductos(filtrados);
         });
 
