@@ -180,9 +180,91 @@
                     document.getElementById('catalogo').classList.remove('hidden');
                 },
                 error: function (err) {
-                    const dataString = `${p['NOMBRE DEL PRODUCTO']} ${p['MARCA VEHICULO']} ${p['MODELO']} ${p['CODIGO LUO-CHA']}`.toUpperCase();
-                    return dataString.includes(texto);
-                });
+                    console.error("Error:", err);
+                    document.getElementById('loading').innerHTML = '<p class="text-red-500">Error cargando datos. Intenta recargar.</p>';
+                }
+            });
+        };
+
+        function renderizarProductos(lista) {
+            const contenedor = document.getElementById('catalogo');
+            contenedor.innerHTML = '';
+
+            if (lista.length === 0) {
+                document.getElementById('no-results').classList.remove('hidden');
+                return;
+            } else {
+                document.getElementById('no-results').classList.add('hidden');
+            }
+
+            lista.forEach(producto => {
+                const nombre = producto['NOMBRE DEL PRODUCTO'];
+                const precio = producto['P.VENTA'];
+
+                if (!nombre || !precio) return;
+
+                const marcaVehiculo = producto['MARCA VEHICULO'] || 'GENÉRICO';
+                const modelo = producto['MODELO'] || 'Varios';
+                const codigo = producto['CODIGO LUO-CHA'] || 'S/C';
+
+                const precioFinal = parseFloat(precio).toFixed(2);
+                const mensajeWA = `Hola AutoMaster, me interesa: ${nombre} (${codigo}) para ${marcaVehiculo}. Precio web: $${precioFinal}`;
+                const linkWA = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWA)}`;
+
+                // Lógica de Imágenes de Prueba (Unsplash)
+                let imagenUrl = "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=600&auto=format&fit=crop"; // Default (Motor/Generic)
+
+                const n = nombre.toUpperCase();
+                if (n.includes("BATERIA")) imagenUrl = "https://images.unsplash.com/photo-1623086878775-4d9149524253?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("FRENO") || n.includes("PASTILLA") || n.includes("DISCO")) imagenUrl = "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("ACEITE") || n.includes("LUBRICANTE")) imagenUrl = "https://images.unsplash.com/photo-1599256621730-535171e28e50?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("AMORTIGUADOR") || n.includes("SUSPENSION")) imagenUrl = "https://images.unsplash.com/photo-1530018352490-c6eef07fd7e0?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("FILTRO")) imagenUrl = "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("LUZ") || n.includes("FARO") || n.includes("BOMBILLO")) imagenUrl = "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("NEUMATICO") || n.includes("LLANTA")) imagenUrl = "https://images.unsplash.com/photo-1578844251758-2f71da645217?q=80&w=600&auto=format&fit=crop";
+                else if (n.includes("BUJIA")) imagenUrl = "https://images.unsplash.com/photo-1635784063228-c3724c946939?q=80&w=600&auto=format&fit=crop";
+
+                const card = `
+                    <div class="bg-[#1a1d24] rounded-xl p-4 border border-gray-800 shadow-lg card-hover flex flex-col justify-between group transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="bg-gray-800 text-gray-300 text-[10px] font-bold px-2 py-1 rounded uppercase border border-gray-700">${marcaVehiculo}</span>
+                                <span class="text-xs text-gray-500 font-mono bg-black/20 px-2 py-1 rounded">${codigo}</span>
+                            </div>
+                            
+                            <!-- Imagen del Producto -->
+                            <div class="h-48 w-full bg-gray-900 rounded-lg mb-4 overflow-hidden relative">
+                                <img src="${imagenUrl}" alt="${nombre}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#1a1d24] via-transparent to-transparent opacity-60"></div>
+                            </div>
+
+                            <h3 class="text-md font-bold text-white leading-tight mb-1 uppercase group-hover:text-automaster-red transition-colors line-clamp-2 h-12">${nombre}</h3>
+                            <p class="text-sm text-gray-400 mb-4 truncate" title="${modelo}">${modelo}</p>
+                        </div>
+
+                        <div class="mt-auto border-t border-gray-800 pt-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase font-semibold">Precio</p>
+                                <p class="text-xl font-bold text-white">$${precioFinal}</p>
+                            </div>
+                            <a href="${linkWA}" target="_blank" class="bg-automaster-red hover:bg-automaster-hover text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-red-900/30 flex items-center gap-2">
+                                <span>Comprar</span>
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += card;
+            });
+        }
+
+        // Buscador
+        document.getElementById('buscador').addEventListener('input', (e) => {
+            const texto = e.target.value.toUpperCase();
+            const filtrados = inventario.filter(p => {
+                const dataString = `${p['NOMBRE DEL PRODUCTO']} ${p['MARCA VEHICULO']} ${p['MODELO']} ${p['CODIGO LUO-CHA']}`.toUpperCase();
+                return dataString.includes(texto);
+            });
             renderizarProductos(filtrados);
         });
 
