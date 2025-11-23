@@ -13,21 +13,32 @@ function renderFullServices(targetId) {
     if (!container) return;
 
     const services = [
-        { icon: 'fa-oil-can', title: 'Cambio de Aceite', desc: 'Aceites sintéticos y minerales de alta gama.' },
-        { icon: 'fa-car-burst', title: 'Frenos ABS', desc: 'Mantenimiento y reparación de sistemas de frenos.' },
-        { icon: 'fa-stethoscope', title: 'Diagnóstico Scanner', desc: 'Lectura y borrado de códigos de error.' },
-        { icon: 'fa-gear', title: 'Caja de Cambios', desc: 'Reparación de transmisiones automáticas y manuales.' },
-        { icon: 'fa-fan', title: 'Aire Acondicionado', desc: 'Carga de gas y limpieza de filtros.' },
-        { icon: 'fa-bolt', title: 'Sistema Eléctrico', desc: 'Reparación de alternadores y arranques.' },
-        { icon: 'fa-truck-pickup', title: 'Suspensión', desc: 'Amortiguadores, mesas y terminales.' },
-        { icon: 'fa-spray-can', title: 'Enderezada y Pintura', desc: 'Acabados profesionales al horno.' }
+        { icon: 'fa-oil-can', title: 'Cambio de Aceite Sintético', category: 'MANTENIMIENTO', price: 45.00 },
+        { icon: 'fa-car-burst', title: 'Frenos ABS (Pastillas + Discos)', category: 'SEGURIDAD', price: 80.00 },
+        { icon: 'fa-stethoscope', title: 'Scanner Computarizado', category: 'DIAGNÓSTICO', price: 25.00 },
+        { icon: 'fa-gear', title: 'Reparación Caja de Cambios', category: 'TRANSMISIÓN', price: 150.00 },
+        { icon: 'fa-fan', title: 'Mantenimiento Aire Acondicionado', category: 'CONFORT', price: 35.00 },
+        { icon: 'fa-bolt', title: 'Revisión Sistema Eléctrico', category: 'ELÉCTRICO', price: 30.00 },
+        { icon: 'fa-truck-pickup', title: 'Suspensión Completa', category: 'MECÁNICA', price: 120.00 },
+        { icon: 'fa-spray-can', title: 'Enderezada y Pintura (Pieza)', category: 'ESTÉTICA', price: 75.00 },
+        { icon: 'fa-road', title: 'Alineación y Balanceo', category: 'LLANTAS', price: 20.00 },
+        { icon: 'fa-filter', title: 'Limpieza de Inyectores', category: 'MOTOR', price: 40.00 },
+        { icon: 'fa-battery-full', title: 'Diagnóstico de Batería', category: 'ELÉCTRICO', price: 10.00 },
+        { icon: 'fa-water', title: 'Lavado de Motor a Vapor', category: 'LIMPIEZA', price: 15.00 }
     ];
 
+    // Using the 'grid-layout' and 'card' classes from styles.css
     container.innerHTML = services.map(service => `
-        <div class="service-card fade-in">
-            <div class="icon-box"><i class="fa-solid ${service.icon}"></i></div>
-            <h3>${service.title}</h3>
-            <p>${service.desc}</p>
+        <div class="card fade-in">
+            <div class="card-image">
+                <i class="fa-solid ${service.icon}" style="color: #ccc;"></i>
+            </div>
+            <div class="card-content">
+                <span class="card-category">${service.category}</span>
+                <h3 class="card-title">${service.title}</h3>
+                <div class="card-price">Desde $${service.price.toFixed(2)}</div>
+                <a href="#" class="btn-card">AGENDAR CITA</a>
+            </div>
         </div>
     `).join('');
 }
