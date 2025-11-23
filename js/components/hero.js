@@ -5,11 +5,11 @@ export function renderHero(targetId) {
     container.innerHTML = `
         <header class="hero-section">
             <div class="hero-content fade-in">
-                <h1>Expertos en tu auto, <span class="highlight">pasión por el servicio</span></h1>
-                <p class="subtitle">Mecánica integral en Quito desde 2022</p>
+                <h1>Ingeniería Automotriz <br><span class="highlight">De Precisión</span></h1>
+                <p class="subtitle">Especialistas en mecánica integral y diagnóstico avanzado. Tu vehículo en manos de expertos certificados.</p>
                 <div class="hero-buttons">
-                    <a href="#contact-container" class="btn btn-primary">Agendar Cita</a>
-                    <a href="#services-container" class="btn btn-secondary">Nuestros Servicios</a>
+                    <a href="#contact-container" class="btn btn-primary">Cotizar Reparación</a>
+                    <a href="#services-container" class="btn btn-secondary">Explorar Servicios</a>
                 </div>
             </div>
         </header>

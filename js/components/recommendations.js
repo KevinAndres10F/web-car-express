@@ -20,6 +20,9 @@ export function renderRecommendations(targetId) {
                         <p>Limpia los bornes de la batería para asegurar un buen arranque.</p>
                     </div>
                 </div>
+                <div class="text-center fade-in" style="margin-top: 2rem; text-align: center;">
+                    <a href="recommendations.html" class="btn btn-secondary" style="color: var(--color-secondary); border-color: var(--color-secondary);">Ver Más Tips</a>
+                </div>
             </div>
         </section>
     `;

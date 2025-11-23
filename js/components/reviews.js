@@ -23,6 +23,9 @@ export function renderReviews(targetId) {
                         <h5>- Carlos Andrade</h5>
                     </div>
                 </div>
+                <div class="text-center fade-in" style="margin-top: 2rem; text-align: center;">
+                    <a href="reviews.html" class="btn btn-secondary" style="border-color: var(--color-white); color: var(--color-white);">Ver Más Reseñas</a>
+                </div>
             </div>
         </section>
     `;

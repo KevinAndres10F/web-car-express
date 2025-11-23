@@ -28,6 +28,9 @@ export function renderParts(targetId) {
                         <span>Desde $80.00</span>
                     </div>
                 </div>
+                <div class="text-center fade-in" style="margin-top: 2rem; text-align: center;">
+                    <a href="parts.html" class="btn btn-primary">Ver Catálogo Completo</a>
+                </div>
             </div>
         </section>
     `;
