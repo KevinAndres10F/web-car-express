@@ -4,293 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoMaster Repuestos | Catálogo Inteligente</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- PapaParse for CSV -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts: Outfit -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        automaster: {
-                            red: '#ff3b30',
-                            dark: '#0f1115',
-                            card: '#1a1d24',
-                            hover: '#d63027'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #0f1115;
-            color: #ffffff;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            border-color: #ff3b30;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #1a1d24;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #2e323b;
-            border-radius: 4px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #ff3b30;
-        }
-    </style>
+    <title>Car-Express | Taller Automotriz en Quito</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="min-h-screen flex flex-col font-sans custom-scrollbar">
+<body>
 
-    <!-- Header -->
-    <header class="bg-[#0f1115]/95 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-10 h-10 bg-automaster-red rounded flex items-center justify-center text-white font-bold text-xl">
-                    <i class="fa-solid fa-car-battery"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-bold tracking-wider">AUTO<span class="text-automaster-red">MASTER</span>
-                    </h1>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest">Repuestos & Performance</p>
-                </div>
-            </div>
+    <!-- Navigation (Simple placeholder for completeness) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Car-Express</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="relative w-full md:w-1/2">
-                <input type="text" id="buscador" placeholder="Buscar por repuesto, marca o código..."
-                    class="w-full bg-[#1a1d24] text-white px-5 py-3 rounded-full border border-gray-700 focus:outline-none focus:border-automaster-red focus:ring-1 focus:ring-automaster-red transition-all placeholder-gray-500">
-                <i class="fa-solid fa-search absolute right-5 top-3.5 text-gray-500"></i>
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section">
+        <div class="hero-content fade-in">
+            <h1>Expertos en tu auto, <span class="highlight">pasión por el servicio</span></h1>
+            <p class="subtitle">Mecánica integral en Quito desde 2022</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">Agendar Cita</a>
+                <a href="#servicios" class="btn btn-secondary">Nuestros Servicios</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero / Filters -->
-    <section class="relative py-12 border-b border-gray-800 overflow-hidden">
-        <!-- Background accent -->
-        <div
-            class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-automaster-red/10 to-transparent pointer-events-none">
-        </div>
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card fade-in">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-oil-can"></i>
+                    </div>
+                    <h3>Cambio de Aceite</h3>
+                    <p>Mantenimiento preventivo con aceites de la mejor calidad para prolongar la vida de tu motor.</p>
+                </div>
 
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">Encuentra tu Repuesto <span
-                    class="text-automaster-red">Ideal</span></h2>
-            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Catálogo actualizado en tiempo real. Filtra por marca o
-                busca directamente lo que necesitas.</p>
+                <!-- Service Card 2 -->
+                <div class="service-card fade-in">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-car-burst"></i>
+                        <!-- Using car-burst as proxy for brakes/danger or similar -->
+                    </div>
+                    <h3>Frenos</h3>
+                    <p>Revisión y cambio de pastillas y discos para garantizar tu seguridad en cada frenada.</p>
+                </div>
 
-            <div class="flex flex-wrap justify-center gap-3" id="filtros-container">
-                <button onclick="filtrar('TODO')"
-                    class="filter-btn active px-6 py-2 rounded-full border border-gray-700 bg-automaster-red text-white font-semibold hover:bg-automaster-hover transition-all shadow-lg shadow-red-900/20">Todos</button>
-                <button onclick="filtrar('CHEVROLET')"
-                    class="filter-btn px-6 py-2 rounded-full border border-gray-700 bg-[#1a1d24] text-gray-300 hover:border-automaster-red hover:text-white transition-all">Chevrolet</button>
-                <button onclick="filtrar('TOYOTA')"
-                    class="filter-btn px-6 py-2 rounded-full border border-gray-700 bg-[#1a1d24] text-gray-300 hover:border-automaster-red hover:text-white transition-all">Toyota</button>
-                <button onclick="filtrar('NISSAN')"
-                    class="filter-btn px-6 py-2 rounded-full border border-gray-700 bg-[#1a1d24] text-gray-300 hover:border-automaster-red hover:text-white transition-all">Nissan</button>
-                <button onclick="filtrar('HYUNDAI')"
-                    class="filter-btn px-6 py-2 rounded-full border border-gray-700 bg-[#1a1d24] text-gray-300 hover:border-automaster-red hover:text-white transition-all">Hyundai</button>
+                <!-- Service Card 3 -->
+                <div class="service-card fade-in">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                    <h3>Diagnóstico</h3>
+                    <p>Escaneo computarizado completo para detectar cualquier falla electrónica o mecánica.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-10 flex-grow">
-        <!-- Loading State -->
-        <div id="loading" class="text-center py-20">
-            <i class="fa-solid fa-circle-notch fa-spin text-5xl text-automaster-red"></i>
-            <p class="mt-4 text-gray-400 animate-pulse">Sincronizando inventario...</p>
-        </div>
-
-        <!-- Grid -->
-        <div id="catalogo" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 hidden">
-            <!-- Cards will be injected here -->
-        </div>
-
-        <!-- No Results -->
-        <div id="no-results" class="hidden text-center py-20 text-gray-500">
-            <div class="inline-block p-6 rounded-full bg-[#1a1d24] mb-4">
-                <i class="fa-solid fa-magnifying-glass-minus text-4xl text-gray-600"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-300">No encontramos resultados</h3>
-            <p>Intenta con otra palabra clave o marca.</p>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-[#08090b] py-8 border-t border-gray-800">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center gap-6 mb-6">
-                <a href="#"
-                    class="w-10 h-10 rounded-full bg-[#1a1d24] flex items-center justify-center text-gray-400 hover:bg-automaster-red hover:text-white transition-all"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"
-                    class="w-10 h-10 rounded-full bg-[#1a1d24] flex items-center justify-center text-gray-400 hover:bg-automaster-red hover:text-white transition-all"><i
-                        class="fa-brands fa-instagram"></i></a>
-                <a href="#"
-                    class="w-10 h-10 rounded-full bg-[#1a1d24] flex items-center justify-center text-gray-400 hover:bg-automaster-red hover:text-white transition-all"><i
-                        class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <p class="text-gray-500 text-sm">&copy; 2025 AutoMaster Repuestos. Potenciado por tecnología Luo-Cha.</p>
-        </div>
-    </footer>
-
-    <script>
-        // CONFIGURACIÓN
-        // Usamos el mismo ID de hoja de cálculo del ejemplo para que funcione de inmediato
-        const SHEET_ID = '1k9S5XWbDm4thI-dV5qUaA5Q0lgeuzTg1SVk2qj-U7jc';
-        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
-        const WHATSAPP_NUMBER = '593999999999'; // Reemplazar con el número real
-
-        let inventario = [];
-
-        window.onload = function () {
-            Papa.parse(SHEET_URL, {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
-                complete: function (results) {
-                    console.log("Inventario cargado:", results.data);
-                    inventario = results.data;
-                    renderizarProductos(inventario);
-                    document.getElementById('loading').classList.add('hidden');
-                    document.getElementById('catalogo').classList.remove('hidden');
-                },
-                error: function (err) {
-                    console.error("Error:", err);
-                    document.getElementById('loading').innerHTML = '<p class="text-red-500">Error cargando datos. Intenta recargar.</p>';
-                }
-            });
-        };
-
-        function renderizarProductos(lista) {
-            const contenedor = document.getElementById('catalogo');
-            contenedor.innerHTML = '';
-
-            if (lista.length === 0) {
-                document.getElementById('no-results').classList.remove('hidden');
-                return;
-            } else {
-                document.getElementById('no-results').classList.add('hidden');
-            }
-
-            lista.forEach(producto => {
-                const nombre = producto['NOMBRE DEL PRODUCTO'];
-                const precio = producto['P.VENTA'];
-
-                if (!nombre || !precio) return;
-
-                const marcaVehiculo = producto['MARCA VEHICULO'] || 'GENÉRICO';
-                const modelo = producto['MODELO'] || 'Varios';
-                const codigo = producto['CODIGO LUO-CHA'] || 'S/C';
-
-                const precioFinal = parseFloat(precio).toFixed(2);
-                const mensajeWA = `Hola AutoMaster, me interesa: ${nombre} (${codigo}) para ${marcaVehiculo}. Precio web: $${precioFinal}`;
-                const linkWA = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWA)}`;
-
-                // Lógica de Imágenes de Prueba (Unsplash)
-                let imagenUrl = "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=600&auto=format&fit=crop"; // Default (Motor/Generic)
-
-                const n = nombre.toUpperCase();
-                if (n.includes("BATERIA")) imagenUrl = "https://images.unsplash.com/photo-1623086878775-4d9149524253?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("FRENO") || n.includes("PASTILLA") || n.includes("DISCO")) imagenUrl = "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("ACEITE") || n.includes("LUBRICANTE")) imagenUrl = "https://images.unsplash.com/photo-1599256621730-535171e28e50?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("AMORTIGUADOR") || n.includes("SUSPENSION")) imagenUrl = "https://images.unsplash.com/photo-1530018352490-c6eef07fd7e0?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("FILTRO")) imagenUrl = "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("LUZ") || n.includes("FARO") || n.includes("BOMBILLO")) imagenUrl = "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("NEUMATICO") || n.includes("LLANTA")) imagenUrl = "https://images.unsplash.com/photo-1578844251758-2f71da645217?q=80&w=600&auto=format&fit=crop";
-                else if (n.includes("BUJIA")) imagenUrl = "https://images.unsplash.com/photo-1635784063228-c3724c946939?q=80&w=600&auto=format&fit=crop";
-
-                const card = `
-                    <div class="bg-[#1a1d24] rounded-xl p-4 border border-gray-800 shadow-lg card-hover flex flex-col justify-between group transition-all duration-300">
-                        <div>
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="bg-gray-800 text-gray-300 text-[10px] font-bold px-2 py-1 rounded uppercase border border-gray-700">${marcaVehiculo}</span>
-                                <span class="text-xs text-gray-500 font-mono bg-black/20 px-2 py-1 rounded">${codigo}</span>
-                            </div>
-                            
-                            <!-- Imagen del Producto -->
-                            <div class="h-48 w-full bg-gray-900 rounded-lg mb-4 overflow-hidden relative">
-                                <img src="${imagenUrl}" alt="${nombre}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#1a1d24] via-transparent to-transparent opacity-60"></div>
-                            </div>
-
-                            <h3 class="text-md font-bold text-white leading-tight mb-1 uppercase group-hover:text-automaster-red transition-colors line-clamp-2 h-12">${nombre}</h3>
-                            <p class="text-sm text-gray-400 mb-4 truncate" title="${modelo}">${modelo}</p>
-                        </div>
-
-                        <div class="mt-auto border-t border-gray-800 pt-4 flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase font-semibold">Precio</p>
-                                <p class="text-xl font-bold text-white">$${precioFinal}</p>
-                            </div>
-                            <a href="${linkWA}" target="_blank" class="bg-automaster-red hover:bg-automaster-hover text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-red-900/30 flex items-center gap-2">
-                                <span>Comprar</span>
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                `;
-                contenedor.innerHTML += card;
-            });
-        }
-
-        // Buscador
-        document.getElementById('buscador').addEventListener('input', (e) => {
-            const texto = e.target.value.toUpperCase();
-            const filtrados = inventario.filter(p => {
-                const dataString = `${p['NOMBRE DEL PRODUCTO']} ${p['MARCA VEHICULO']} ${p['MODELO']} ${p['CODIGO LUO-CHA']}`.toUpperCase();
-                return dataString.includes(texto);
-            });
-            renderizarProductos(filtrados);
-        });
-
-        // Filtros
-        function filtrar(marca) {
-            // Actualizar estado visual de botones
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-automaster-red', 'text-white', 'shadow-lg');
-                btn.classList.add('bg-[#1a1d24]', 'text-gray-300');
-                if (btn.textContent.toUpperCase() === marca || (marca === 'TODO' && btn.textContent === 'Todos')) {
-                    btn.classList.remove('bg-[#1a1d24]', 'text-gray-300');
-                    btn.classList.add('bg-automaster-red', 'text-white', 'shadow-lg');
-                }
-            });
-
-            if (marca === 'TODO') {
-                renderizarProductos(inventario);
-            } else {
-                const filtrados = inventario.filter(p => {
-                    const marcaV = p['MARCA VEHICULO'] ? p['MARCA VEHICULO'].toUpperCase() : '';
-                    return marcaV.includes(marca);
-                });
-                renderizarProductos(filtrados);
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
