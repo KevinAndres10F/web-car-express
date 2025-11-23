@@ -5,44 +5,63 @@ export function renderServices(targetId) {
     container.innerHTML = `
         <section class="services-section">
             <div class="container">
-                <h2 class="section-title fade-in">Nuestros Servicios</h2>
-                <div class="bento-grid">
-                    <!-- Featured Item (Spans 2 columns) -->
-                    <div class="bento-item featured fade-in">
-                        <div class="icon-box"><i class="fa-solid fa-stethoscope"></i></div>
-                        <h3>Diagnóstico Computarizado</h3>
-                        <p>Análisis profundo con scanners de última generación para detectar fallas electrónicas complejas con precisión milimétrica.</p>
-                    </div>
-
-                    <!-- Standard Item -->
-                    <div class="bento-item fade-in">
-                        <div class="icon-box"><i class="fa-solid fa-oil-can"></i></div>
-                        <h3>Mantenimiento Preventivo</h3>
-                        <p>Cambios de aceite y filtros para extender la vida útil del motor.</p>
-                    </div>
-
-                    <!-- Standard Item -->
-                    <div class="bento-item fade-in">
-                        <div class="icon-box"><i class="fa-solid fa-car-burst"></i></div>
-                        <h3>Sistema de Frenos</h3>
-                        <p>Rectificación de discos y cambio de pastillas de alto rendimiento.</p>
-                    </div>
-
-                    <!-- Standard Item -->
-                    <div class="bento-item fade-in">
-                        <div class="icon-box"><i class="fa-solid fa-gear"></i></div>
-                        <h3>Transmisión</h3>
-                        <p>Reparación y mantenimiento de cajas automáticas y manuales.</p>
-                    </div>
-                     <!-- Standard Item -->
-                    <div class="bento-item fade-in">
-                        <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
-                        <h3>Sistema Eléctrico</h3>
-                        <p>Solución a problemas de arranque, alternador y cableado.</p>
-                    </div>
+                <div class="section-header">
+                    <h2 class="section-title">SERVICIOS POPULARES</h2>
+                    <a href="services.html" class="view-all">VER TODOS <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <div class="text-center fade-in" style="margin-top: 4rem; text-align: center;">
-                    <a href="services.html" class="btn btn-primary" style="background: transparent; color: var(--color-accent); border: 1px solid var(--color-accent); box-shadow: none;">Ver Todos los Servicios</a>
+                
+                <div class="grid-layout">
+                    <!-- Service Card 1 -->
+                    <div class="card fade-in">
+                        <div class="card-image">
+                            <i class="fa-solid fa-oil-can" style="color: #ccc;"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">MANTENIMIENTO</span>
+                            <h3 class="card-title">Cambio de Aceite Sintético</h3>
+                            <div class="card-price">Desde $45.00</div>
+                            <a href="#" class="btn-card">AGENDAR CITA</a>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="card fade-in">
+                        <div class="card-image">
+                            <i class="fa-solid fa-car-burst" style="color: #ccc;"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">SEGURIDAD</span>
+                            <h3 class="card-title">Frenos ABS (Pastillas + Discos)</h3>
+                            <div class="card-price">Desde $80.00</div>
+                            <a href="#" class="btn-card">AGENDAR CITA</a>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="card fade-in">
+                        <div class="card-image">
+                            <i class="fa-solid fa-stethoscope" style="color: #ccc;"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">DIAGNÓSTICO</span>
+                            <h3 class="card-title">Scanner Computarizado</h3>
+                            <div class="card-price">Desde $25.00</div>
+                            <a href="#" class="btn-card">AGENDAR CITA</a>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div class="card fade-in">
+                        <div class="card-image">
+                            <i class="fa-solid fa-bolt" style="color: #ccc;"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">ELÉCTRICO</span>
+                            <h3 class="card-title">Revisión Sistema Eléctrico</h3>
+                            <div class="card-price">Desde $30.00</div>
+                            <a href="#" class="btn-card">AGENDAR CITA</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
