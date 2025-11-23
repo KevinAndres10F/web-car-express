@@ -2,36 +2,120 @@ export function renderParts(targetId) {
     const container = document.getElementById(targetId);
     if (!container) return;
 
+    // Data extracted from Google Sheet (Simulated Retail Prices)
+    const parts = [
+        {
+            id: 1,
+            name: 'Termostato Haval H5 Turbo',
+            brand: 'Haval Genuine',
+            model: 'H5 Turbo / H6',
+            price: 18.00,
+            oldPrice: 25.00,
+            rating: 5,
+            reviews: 12,
+            image: 'https://placehold.co/400x400/png?text=Termostato+Haval'
+        },
+        {
+            id: 2,
+            name: 'Templador Distribución Aveo',
+            brand: 'Chevrolet OEM',
+            model: 'Aveo Family / Emotion',
+            price: 12.50,
+            oldPrice: 18.00,
+            rating: 4,
+            reviews: 45,
+            image: 'https://placehold.co/400x400/png?text=Templador+Aveo'
+        },
+        {
+            id: 3,
+            name: 'Zapatas de Freno Sail',
+            brand: 'RTECH',
+            model: 'Chevrolet Sail 1.4/1.5',
+            price: 15.99,
+            oldPrice: 22.00,
+            rating: 5,
+            reviews: 8,
+            image: 'https://placehold.co/400x400/png?text=Zapatas+Sail'
+        },
+        {
+            id: 4,
+            name: 'Triceta Aveo Activo',
+            brand: 'Exact',
+            model: 'Aveo / ChevyTaxi',
+            price: 9.50,
+            oldPrice: 14.00,
+            rating: 4,
+            reviews: 23,
+            image: 'https://placehold.co/400x400/png?text=Triceta+Aveo'
+        },
+        {
+            id: 5,
+            name: 'Tubo Calefacción',
+            brand: 'GM Original',
+            model: 'Aveo Activo / Emotion',
+            price: 10.00,
+            oldPrice: 15.00,
+            rating: 5,
+            reviews: 5,
+            image: 'https://placehold.co/400x400/png?text=Tubo+Calefaccion'
+        },
+        {
+            id: 6,
+            name: 'Zapatas Freno Nissan',
+            brand: 'Kloss',
+            model: 'Sentra B13',
+            price: 14.50,
+            oldPrice: 20.00,
+            rating: 4,
+            reviews: 18,
+            image: 'https://placehold.co/400x400/png?text=Zapatas+Nissan'
+        }
+    ];
+
     container.innerHTML = `
         <section class="parts-section">
             <div class="container">
-                <h2 class="section-title fade-in">Repuestos Originales</h2>
-                <div class="parts-grid">
-                    <div class="part-item fade-in">
-                        <div class="part-icon"><i class="fa-solid fa-filter"></i></div>
-                        <h4>Filtros</h4>
-                        <span>Desde $15.00</span>
-                    </div>
-                    <div class="part-item fade-in">
-                        <div class="part-icon"><i class="fa-solid fa-compact-disc"></i></div>
-                        <h4>Pastillas de Freno</h4>
-                        <span>Desde $45.00</span>
-                    </div>
-                    <div class="part-item fade-in">
-                        <div class="part-icon"><i class="fa-solid fa-bottle-water"></i></div>
-                        <h4>Aceites Sintéticos</h4>
-                        <span>Desde $35.00</span>
-                    </div>
-                    <div class="part-item fade-in">
-                        <div class="part-icon"><i class="fa-solid fa-car-battery"></i></div>
-                        <h4>Baterías</h4>
-                        <span>Desde $80.00</span>
-                    </div>
+                <div class="section-header">
+                    <h2 class="section-title">REPUESTOS DESTACADOS</h2>
+                    <a href="parts.html" class="view-all">VER CATÁLOGO <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <div class="text-center fade-in" style="margin-top: 2rem; text-align: center;">
-                    <a href="parts.html" class="btn btn-primary">Ver Catálogo Completo</a>
+                
+                <div class="parts-grid-retail">
+                    ${parts.map(part => {
+        const discount = Math.round(((part.oldPrice - part.price) / part.oldPrice) * 100);
+        return `
+                        <div class="retail-card fade-in">
+                            <div class="badge-sale">SALE</div>
+                            <div class="card-img-container">
+                                <img src="${part.image}" alt="${part.name}">
+                            </div>
+                            <div class="card-details">
+                                <div class="card-brand">${part.brand}</div>
+                                <h3 class="card-name">${part.name}</h3>
+                                <div class="card-rating">
+                                    ${getStars(part.rating)} <span class="review-count">(${part.reviews})</span>
+                                </div>
+                                <div class="card-meta">${part.model}</div>
+                                <div class="card-pricing">
+                                    <span class="price-current">$${part.price.toFixed(2)}</span>
+                                    <span class="price-old">$${part.oldPrice.toFixed(2)}</span>
+                                    <span class="price-discount">(-${discount}%)</span>
+                                </div>
+                            </div>
+                            <button class="btn-quick-add"><i class="fa-solid fa-cart-plus"></i> QUICK ADD</button>
+                        </div>
+                        `;
+    }).join('')}
                 </div>
             </div>
         </section>
     `;
+}
+
+function getStars(rating) {
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+        stars += i < rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+    }
+    return stars;
 }

@@ -379,6 +379,166 @@ a {
     color: var(--color-text-light);
 }
 
+/* Retail Parts Grid */
+.parts-grid-retail {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    padding-bottom: 4rem;
+}
+
+.retail-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.retail-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #d1d5db;
+}
+
+.badge-sale {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #2563EB;
+    /* Royal Blue like reference */
+    color: white;
+    padding: 4px 12px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    z-index: 10;
+    border-radius: 2px;
+}
+
+.card-img-container {
+    height: 250px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    /* White background as requested */
+}
+
+.card-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-details {
+    padding: 15px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-brand {
+    font-size: 0.85rem;
+    color: #9CA3AF;
+    /* Light grey */
+    margin-bottom: 4px;
+    text-decoration: underline;
+    text-decoration-color: #e5e7eb;
+}
+
+.card-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    font-family: var(--font-body);
+    /* Body font for name, not heading */
+}
+
+.card-rating {
+    color: #2563EB;
+    /* Blue stars */
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.review-count {
+    color: #6B7280;
+    font-size: 0.8rem;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+    color: #2563EB;
+    margin-bottom: 12px;
+}
+
+.card-pricing {
+    margin-top: auto;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.price-current {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2563EB;
+    /* Blue price */
+}
+
+.price-old {
+    font-size: 0.9rem;
+    color: #EF4444;
+    /* Red strikethrough */
+    text-decoration: line-through;
+}
+
+.price-discount {
+    font-size: 0.9rem;
+    color: #10B981;
+    /* Green discount */
+    font-weight: 600;
+}
+
+.btn-quick-add {
+    width: 100%;
+    background-color: #2563EB;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-quick-add:hover {
+    background-color: #1D4ED8;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-main {
@@ -396,7 +556,6 @@ a {
 
     .nav-categories {
         display: none;
-        /* Hide for simplicity in mobile view or implement hamburger */
     }
 
     .features-grid {
