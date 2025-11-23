@@ -1,9 +1,12 @@
 :root {
     --color-cream: #F2F0E4;
     --color-white: #FFFFFF;
-    --color-primary: #229F56; /* Green */
-    --color-secondary: #0D2334; /* Navy */
-    --color-accent: #D96C6C; /* Soft Red */
+    --color-primary: #229F56;
+    /* Green */
+    --color-secondary: #0D2334;
+    /* Navy */
+    --color-accent: #D96C6C;
+    /* Soft Red */
     --font-main: 'Poppins', sans-serif;
     --transition-speed: 0.3s;
 }
@@ -58,17 +61,18 @@ body {
 .btn-secondary {
     background-color: transparent;
     color: var(--color-white);
-    border: 2px solid var(--color-secondary); /* Will be overridden in Hero context */
+    border: 2px solid var(--color-secondary);
 }
 
 /* Navbar */
 .navbar {
     background-color: var(--color-secondary);
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+    /* Reduced padding for logo fit */
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .container {
@@ -77,11 +81,19 @@ body {
     align-items: center;
 }
 
-.logo {
-    color: var(--color-white);
-    font-size: 1.5rem;
-    font-weight: 700;
+.logo-container {
+    display: flex;
+    align-items: center;
     text-decoration: none;
+}
+
+.nav-logo {
+    height: 60px;
+    /* Adjust based on logo aspect ratio */
+    width: auto;
+    border-radius: 50%;
+    /* Optional: if logo is circular */
+    border: 2px solid var(--color-white);
 }
 
 .nav-links {
@@ -114,7 +126,6 @@ body {
     overflow: hidden;
 }
 
-/* Decorative circle in hero */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -158,7 +169,7 @@ body {
 }
 
 .hero-buttons .btn-secondary {
-    border-color: #3b82f6; /* Blue border as requested */
+    border-color: #3b82f6;
     color: var(--color-white);
 }
 
@@ -167,10 +178,12 @@ body {
     transform: translateY(-2px);
 }
 
-/* Services Section */
-.services-section {
+/* Common Section Styles */
+.services-section,
+.recommendations-section,
+.parts-section,
+.reviews-section {
     padding: 5rem 0;
-    background-color: var(--color-white);
 }
 
 .section-title {
@@ -194,6 +207,11 @@ body {
     border-radius: 2px;
 }
 
+/* Services Grid */
+.services-section {
+    background-color: var(--color-white);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -207,13 +225,12 @@ body {
     text-align: center;
     transition: all var(--transition-speed) ease;
     border: 2px solid transparent;
-    cursor: default;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    border-color: var(--color-primary); /* Change border color on hover */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     background-color: var(--color-white);
 }
 
@@ -234,9 +251,163 @@ body {
     color: var(--color-secondary);
 }
 
-.service-card p {
-    color: #555;
-    font-size: 0.95rem;
+/* Recommendations Section */
+.recommendations-section {
+    background-color: var(--color-cream);
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.rec-card {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--color-accent);
+}
+
+.rec-card h4 {
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rec-card h4 i {
+    color: var(--color-accent);
+}
+
+/* Parts Section */
+.parts-section {
+    background-color: var(--color-white);
+}
+
+.parts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.part-item {
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: transform var(--transition-speed);
+}
+
+.part-item:hover {
+    transform: scale(1.05);
+    border-color: var(--color-primary);
+}
+
+.part-icon {
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+}
+
+.part-item h4 {
+    margin-bottom: 0.5rem;
+}
+
+.part-item span {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Reviews Section */
+.reviews-section {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.reviews-section .section-title {
+    color: var(--color-white);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.stars {
+    color: #FFD700;
+    margin-bottom: 1rem;
+}
+
+.review-card p {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.review-card h5 {
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer-section {
+    background-color: #081621;
+    /* Darker Navy */
+    color: var(--color-cream);
+    padding: 4rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h3 {
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-col p {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    transition: color var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: var(--color-primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 /* Animations */
@@ -256,12 +427,13 @@ body {
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
     }
-    
+
     .nav-links {
-        display: none; /* Mobile menu not implemented for brevity */
+        display: none;
+        /* Mobile menu placeholder */
     }
 }
